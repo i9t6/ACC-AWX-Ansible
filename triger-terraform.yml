@@ -30,5 +30,5 @@
     register: plan
   
   - debug:
-      msg: '{{plan}}'
+      msg: '{{plan.stdout_lines}}'
   
