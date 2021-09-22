@@ -1,6 +1,6 @@
 ---
 - name: Configuring Tenant with CSV file
-  hosts: apic
+  hosts: "{{ apic }}"
   connection: local
   gather_facts: false
 
