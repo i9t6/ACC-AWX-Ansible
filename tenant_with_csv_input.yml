@@ -1,6 +1,6 @@
 ---
 - name: Configuring Tenant with CSV file
-  hosts: "{{ apic }}"
+  hosts: "{{ inventory_hostname }}"
   connection: local
   gather_facts: false
 
@@ -11,6 +11,7 @@
       # key: tenant
     register: mytenant
     delegate_to: localhost
+    no_log: true
 
   # Used for debugging purposes to make sure list is correct.
   #- debug:
@@ -27,8 +28,8 @@
     aci_tenant:
       hostname: "{{ inventory_hostname }}"
       username: "{{ new_user }}"
-      #password: "{{ password }}"
-      private_key: "{{ new_user }}.key"
+      password: "{{ password }}"
+      #private_key: "{{ new_user }}.key"
       tenant: "{{ item.tenant }}"
       description: "Tenant configured by Ansible"
       validate_certs: false
@@ -39,8 +40,8 @@
     aci_vrf:
       hostname: "{{ inventory_hostname }}"
       username: "{{ new_user }}"
-      #password: "{{ password }}"
-      private_key: "{{ new_user }}.key"
+      password: "{{ password }}"
+      #private_key: "{{ new_user }}.key"
       tenant: "{{ item.tenant }}"
       vrf: "{{ item.vrf }}"
       description: "VRF configured by Ansible"
@@ -56,8 +57,8 @@
     aci_bd:
       hostname: "{{ inventory_hostname }}"
       username: "{{ new_user }}"
-      #password: "{{ password }}"
-      private_key: "{{ new_user }}.key"
+      password: "{{ password }}"
+      #private_key: "{{ new_user }}.key"
       tenant: "{{ item.tenant }}"
       vrf: "{{ item.vrf }}"
       bd: "{{ item.bd }}"
@@ -79,8 +80,8 @@
     aci_bd_subnet:
       hostname: "{{ inventory_hostname }}"
       username: "{{ new_user }}"
-      #password: "{{ password }}"
-      private_key: "{{ new_user }}.key"
+      password: "{{ password }}"
+      #private_key: "{{ new_user }}.key"
       tenant: "{{ item.tenant }}"
       bd: "{{ item.bd }}"
       gateway: "{{ item.ip }}"
@@ -107,8 +108,8 @@
     aci_ap:
       hostname: "{{ inventory_hostname }}"
       username: "{{ new_user }}"
-      #password: "{{ password }}"
-      private_key: "{{ new_user }}.key"
+      password: "{{ password }}"
+      #private_key: "{{ new_user }}.key"
       tenant: "{{ item.tenant }}"
       ap: "{{ item.app_pro }}"
       description: "app profile configured by Ansible"
@@ -124,8 +125,8 @@
     aci_epg:
       hostname: "{{ inventory_hostname }}"
       username: "{{ new_user }}"
-      #password: "{{ password }}"
-      private_key: "{{ new_user }}.key"
+      password: "{{ password }}"
+      #private_key: "{{ new_user }}.key"
       tenant: "{{ item.tenant }}"
       ap: "{{ item.app_pro }}"
       epg: "{{ item.epg }}"
@@ -165,8 +166,8 @@
     aci_contract:
       hostname: "{{ inventory_hostname }}"
       username: "{{ new_user }}"
-      #password: "{{ password }}"
-      private_key: "{{ new_user }}.key"
+      password: "{{ password }}"
+      #private_key: "{{ new_user }}.key"
       contract: "{{ item.contract }}"
       tenant: "{{ item.tenant }}"
       scope: "context"
@@ -189,8 +190,8 @@
     aci_filter:
       hostname: "{{ inventory_hostname }}"
       username: "{{ new_user }}"
-      #password: "{{ password }}"
-      private_key: "{{ new_user }}.key"
+      password: "{{ password }}"
+      #private_key: "{{ new_user }}.key"
       filter: "{{ item.filter }}"
       tenant: "{{ item.tenant }}"
       description: "Filter created by Ansible"
@@ -213,8 +214,8 @@
     aci_filter_entry:
       hostname: "{{ inventory_hostname }}"
       username: "{{ new_user }}"
-      #password: "{{ password }}"
-      private_key: "{{ new_user }}.key"
+      password: "{{ password }}"
+      #private_key: "{{ new_user }}.key"
       entry: "{{ item.entry }}"
       tenant: "{{ item.tenant }}"
       ether_type: ip
@@ -252,8 +253,8 @@
     aci_contract_subject:
       hostname: "{{ inventory_hostname }}"
       username: "{{ new_user }}"
-      #password: "{{ password }}"
-      private_key: "{{ new_user }}.key"
+      password: "{{ password }}"
+      #private_key: "{{ new_user }}.key"
       tenant: "{{ item.tenant }}"
       contract: "{{ item.contract }}"
       subject: "{{ item.subject }}"
@@ -281,8 +282,8 @@
     aci_contract_subject_to_filter:
       hostname: "{{ inventory_hostname }}"
       username: "{{ new_user }}"
-      #password: "{{ password }}"
-      private_key: "{{ new_user }}.key"
+      password: "{{ password }}"
+      #private_key: "{{ new_user }}.key"
       tenant: "{{ item.tenant }}"
       contract: "{{ item.contract }}"
       filter: "{{ item.filter }}"
@@ -313,8 +314,8 @@
     aci_epg_to_contract:
       hostname: "{{ inventory_hostname }}"
       username: "{{ new_user }}"
-      #password: "{{ password }}"
-      private_key: "{{ new_user }}.key"
+      password: "{{ password }}"
+      #private_key: "{{ new_user }}.key"
       tenant: "{{ item.tenant }}"
       epg: "{{ item.epg }}"
       ap: "{{ item.app_pro }}"
