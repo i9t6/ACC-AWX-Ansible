@@ -5,7 +5,6 @@
   gather_facts: false
 
   tasks:
-  # Read a CSV file and access Tenant csv
   - name: Read data from CSV file to be used to configure ACI
     read_csv:
       path: tenant.csv
