@@ -3,6 +3,7 @@
   hosts: "{{ apic }}"
   connection: local
   gather_facts: false
+  no_log: true
 
   tasks:
   - name: Read data from CSV file to be used to configure ACI
@@ -11,7 +12,7 @@
       # key: tenant
     register: mytenant
     delegate_to: localhost
-    no_log: true
+    
 
   # Used for debugging purposes to make sure list is correct.
   #- debug:
