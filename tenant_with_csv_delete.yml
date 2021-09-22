@@ -1,0 +1,26 @@
+---
+- name: Deleting Tenant with CSV file
+  hosts: "{{ apic }}"
+  connection: local
+  gather_facts: false
+  no_log: true
+
+  tasks:
+  - name: Read data from CSV file to be used to configure ACI
+    read_csv:
+      path: tenant.csv
+      # key: tenant
+    register: mytenant
+    delegate_to: localhost
+
+  - name: Delete Tenants using CSV and loop
+    aci_tenant:
+      hostname: "{{ inventory_hostname }}"
+      username: "{{ new_user }}"
+      password: "{{ password }}"
+      #private_key: "{{ new_user }}.key"
+      tenant: "{{ item.tenant }}"
+      description: "Tenant configured by Ansible"
+      validate_certs: false
+      state: absent
+    loop: "{{ mytenant.list }}"
