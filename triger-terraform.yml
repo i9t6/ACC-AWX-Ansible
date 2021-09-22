@@ -23,7 +23,8 @@
   tasks:
   - name: Basic deploy of a service
     community.general.terraform:
-      project_path: "{{ path }}"
+      project_path: "{{ project_path }}"
+      binary_path: "{{ terraform_path }}"
       state: present
       force_init: true
     register: plan
