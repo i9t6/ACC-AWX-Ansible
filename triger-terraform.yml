@@ -16,14 +16,14 @@
 # 
 # AUTHOR(s): Francisco Quiroz <frquiroz@cisco.com>
 - name: Automation XR - ICE
-  hosts: '{{ tserver }}'
+  hosts: "{{ terraform_server }}"
   connection: local
   gather_facts: no
   
   tasks:
   - name: Basic deploy of a service
     community.general.terraform:
-      project_path: '{{ path }}'
+      project_path: "{{ path }}"
       state: present
       force_init: true
     register: plan
