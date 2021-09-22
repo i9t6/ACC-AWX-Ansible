@@ -18,5 +18,4 @@
 
 collections:
   - cisco.aci
-  - community.general.terraform
   - community.general
