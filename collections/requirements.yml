@@ -17,4 +17,5 @@
 # AUTHOR(s): Francisco Quiroz <frquiroz@cisco.com>
 
 collections:
+  - cisco.aci
   - community.general
