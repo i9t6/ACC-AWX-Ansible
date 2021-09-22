@@ -18,4 +18,4 @@
 
 collections:
   - cisco.aci
-  - community.general
+  - community.general:1.3.9
